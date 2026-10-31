@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titulo %}Personal{% endblock %}
+{% block contenido %}
+<h1>Ingreso del personal</h1>
+<form class="formulario" method="post">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <div class="campo"><label for="usuario">Usuario</label><input id="usuario" name="usuario" type="text" value="{{ usuario }}" autocomplete="username" required></div>
+  <div class="campo"><label for="clave">Clave</label><input id="clave" name="clave" type="password" autocomplete="current-password" required></div>
+  <button class="boton-principal">Ingresar</button>
+</form>
+{% endblock %}

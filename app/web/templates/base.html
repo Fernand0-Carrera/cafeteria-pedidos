@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Cafetería{% endblock %} · Pedidos de cafetería</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+  {% block cabeza %}{% endblock %}
+</head>
+<body>
+<header class="cabecera">
+  <div class="cabecera-interna">
+    <a class="marca" href="{{ url_for('inicio') }}">Cafetería universitaria<small>pedidos</small></a>
+    <nav class="nav" aria-label="Principal">
+      {% if session.personal_usuario %}
+        <a href="{{ url_for('personal.pedidos') }}" {% if request.endpoint == 'personal.pedidos' %}aria-current="page"{% endif %}>Pedidos</a>
+        <a href="{{ url_for('personal.entrega') }}" {% if request.endpoint == 'personal.entrega' %}aria-current="page"{% endif %}>Entregar</a>
+        <a href="{{ url_for('personal.productos') }}" {% if request.endpoint and request.endpoint.startswith('personal.') and 'producto' in request.endpoint %}aria-current="page"{% endif %}>Menú</a>
+        <span class="quien">{{ session.personal_nombre }}</span>
+        <form method="post" action="{{ url_for('personal.salir') }}"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><button class="boton-texto" style="color:#fff">Salir</button></form>
+      {% else %}
+        <a href="{{ url_for('cliente.menu') }}" {% if request.endpoint == 'cliente.menu' %}aria-current="page"{% endif %}>Menú</a>
+        {% if session.cliente_id %}
+          <a href="{{ url_for('cliente.mis_pedidos') }}" {% if request.endpoint == 'cliente.mis_pedidos' %}aria-current="page"{% endif %}>Mis pedidos</a>
+          <span class="quien">{{ session.cliente_nombre }} ({{ session.cliente_codigo }})</span>
+          <form method="post" action="{{ url_for('cliente.salir') }}"><input type="hidden" name="csrf" value="{{ csrf_token() }}"><button class="boton-texto" style="color:#fff">Salir</button></form>
+        {% else %}
+          <a href="{{ url_for('cliente.ingresar') }}">Ingresar</a>
+          <a href="{{ url_for('cliente.registro') }}">Registrarme</a>
+        {% endif %}
+      {% endif %}
+    </nav>
+  </div>
+</header>
+<main>
+  {% with mensajes = get_flashed_messages(with_categories=true) %}
+    {% for categoria, mensaje in mensajes %}
+      <div class="aviso aviso-{{ categoria }}" role="{{ 'alert' if categoria == 'error' else 'status' }}">{{ mensaje }}</div>
+    {% endfor %}
+  {% endwith %}
+  {% block contenido %}{% endblock %}
+</main>
+<footer class="pie-pagina">Gestión de pedidos · Release {{ version }}</footer>
+</body>
+</html>

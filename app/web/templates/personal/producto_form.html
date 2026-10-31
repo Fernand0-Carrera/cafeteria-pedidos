@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}{{ 'Nuevo producto' if nuevo else 'Editar producto' }}{% endblock %}
+{% block contenido %}
+<h1>{{ 'Agregar producto' if nuevo else 'Editar ' ~ datos.nombre }}</h1>
+<form class="formulario" method="post" novalidate>
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <div class="campo"><label for="codigo">Código</label>
+    {% if nuevo %}<input id="codigo" name="codigo" type="text" value="{{ datos.codigo }}" maxlength="10" required><p class="ayuda">De 2 a 10 letras, números o guiones. No se puede cambiar después.</p>
+    {% else %}<input id="codigo" type="text" value="{{ datos.codigo }}" disabled>{% endif %}
+  </div>
+  <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" value="{{ datos.nombre }}" maxlength="80" required></div>
+  <div class="campo"><label for="categoria">Categoría</label>
+    <select id="categoria" name="categoria">
+      <option value="ALIMENTO" {% if datos.categoria == 'ALIMENTO' %}selected{% endif %}>Alimento</option>
+      <option value="BEBIDA" {% if datos.categoria == 'BEBIDA' %}selected{% endif %}>Bebida</option>
+    </select></div>
+  <div class="campo"><label for="precio">Precio (USD)</label><input id="precio" name="precio" type="text" inputmode="decimal" value="{{ datos.precio }}" required><p class="ayuda">Ejemplo: 1.50. Los pedidos ya registrados conservan su precio.</p></div>
+  <div class="campo casilla"><input id="disponible" name="disponible" type="checkbox" value="1" {% if datos.disponible %}checked{% endif %}><label for="disponible" style="margin:0">Disponible para nuevos pedidos</label></div>
+  <div class="acciones"><button class="boton-principal">{{ 'Agregar producto' if nuevo else 'Guardar cambios' }}</button><a href="{{ url_for('personal.productos') }}">Cancelar</a></div>
+</form>
+{% endblock %}
