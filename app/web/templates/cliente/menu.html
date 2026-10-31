@@ -12,7 +12,7 @@
       <h2>{{ 'Para comer' if categoria == 'ALIMENTO' else 'Para tomar' }}</h2>
       {% for p in grupo %}
       <div class="linea-menu">
-        <span class="nombre"><label for="cant_{{ p.codigo }}">{{ p.nombre }} <span class="codigo-prod">{{ p.codigo }}</span></label></span>
+        <span class="nombre">{% if session.cliente_id %}<label for="cant_{{ p.codigo }}">{{ p.nombre }} <span class="codigo-prod">{{ p.codigo }}</span></label>{% else %}<span>{{ p.nombre }} <span class="codigo-prod">{{ p.codigo }}</span></span>{% endif %}</span>
         <span class="precio">{{ p.precio_centavos|dinero }}</span>
         {% if session.cliente_id %}
         <input id="cant_{{ p.codigo }}" name="cant_{{ p.codigo }}" type="number" min="0" max="{{ config.CANTIDAD_MAXIMA }}" step="1" inputmode="numeric" placeholder="0" value="{{ cantidades.get(p.codigo, '') }}" aria-label="Cantidad de {{ p.nombre }}">
