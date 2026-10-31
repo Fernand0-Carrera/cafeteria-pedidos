@@ -38,19 +38,19 @@ def test_cp03_cedula_con_formato_invalido_es_rechazada(cedula, motivo):
         validar_cedula(cedula)
 
 
-@pytest.mark.parametrize("correo", ["Ana@Universidad.edu.ec", "a.b-c@estud.universidad.edu.ec"])
+@pytest.mark.parametrize("correo", ["Ana@Epn.edu.ec", "a.b-c@estud.epn.edu.ec"])
 def test_cp04_correo_institucional_valido(correo):
     """CP-04: se acepta el dominio institucional y sus subdominios; se normaliza a minúsculas."""
-    assert validar_correo_institucional(correo, "universidad.edu.ec") == correo.lower()
+    assert validar_correo_institucional(correo, "epn.edu.ec") == correo.lower()
 
 
-@pytest.mark.parametrize("correo", ["ana@gmail.com", "ana@universidad.edu.ec.com",
-                                    "ana@fakeuniversidad.edu.ec", "ana", "@universidad.edu.ec",
-                                    "a na@universidad.edu.ec"])
+@pytest.mark.parametrize("correo", ["ana@gmail.com", "ana@epn.edu.ec.com",
+                                    "ana@fakeepn.edu.ec", "ana", "@epn.edu.ec",
+                                    "a na@epn.edu.ec"])
 def test_cp05_correo_no_institucional_es_rechazado(correo):
     """CP-05: correos de otros dominios o mal formados se rechazan."""
     with pytest.raises(ValidacionError, match="institucional"):
-        validar_correo_institucional(correo, "universidad.edu.ec")
+        validar_correo_institucional(correo, "epn.edu.ec")
 
 
 def test_cp06_celular_y_nombre():
