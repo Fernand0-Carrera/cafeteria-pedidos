@@ -19,9 +19,9 @@
 
 | Elemento | Valor |
 |---|---|
-| Sistema operativo | Linux (Ubuntu 24.04) |
-| Python / pytest / pytest-cov | 3.12.3 / 9.2.0 / 7.1.0 |
-| Base de datos | SQLite 3.45.1 (en memoria para unitarias; archivo temporal para integración) |
+| Sistema operativo | Windows 11 (`win32`) |
+| Python / pytest / pytest-cov | 3.13.14 / 9.2.0 / 7.1.0 |
+| Base de datos | SQLite 3.50.4 (en memoria para unitarias; archivo temporal para integración) |
 | Navegador (PS-01) | Chromium (Playwright 1.56.0) |
 | Comando | `pytest -v --cov=app --cov-branch --junitxml=docs/reportes/pruebas/resultados_junit.xml` |
 
@@ -31,10 +31,10 @@
 |---|---|---|
 | Casos de prueba diseñados | 47 (CP-01 a CP-47) + 3 de apoyo | 47 + 3 |
 | Ejecuciones (incluye parametrizaciones) | 88 | 88 |
-| Aprobadas | 87 | **88** |
-| Fallidas | **1** (CP-44) · **1** al ampliar CP-41 | **0** |
+| Aprobadas | 86 | **88** |
+| Fallidas | **2** (CP-41 y CP-44) | **0** |
 | Cobertura de líneas y ramas | — | **94 %** |
-| Tiempo total | 2.2 s | 2.6 s |
+| Tiempo total | 3.12 s | 3.89 s |
 
 Dos casos no fueron exitosos al inicio. Ambos revelaron defectos reales del producto; su análisis, solución y re-ejecución están en la sección 6.5.
 
@@ -134,11 +134,11 @@ Columnas: **Esperado** = resultado esperado; **Obtenido** = resultado de la ejec
 **Resultado de la primera ejecución** (evidencia: `reportes/pruebas/cp44_ejecucion1_fallida.txt`):
 
 ```text
-tests/test_web.py::test_cp44_proteccion_csrf FAILED
+tests/test_web.py::test_cp44_proteccion_csrf FAILED                      [100%]
 >       assert respuesta.status_code == 400 and "expiró" in respuesta.get_data(as_text=True)
 E       assert (302 == 400)
 FAILED tests/test_web.py::test_cp44_proteccion_csrf - assert (302 == 400)
-1 failed, 87 passed in 2.19s
+============================== 1 failed in 0.46s ==============================
 ```
 
 **Análisis.** Se esperaba que un formulario enviado sin token fuera rechazado (400), pero el ingreso se aceptó (302). La verificación comparaba el token del formulario con el de la sesión así:
@@ -164,7 +164,7 @@ if not esperado or not secrets.compare_digest(enviado, esperado):
 
 ```text
 tests/test_web.py::test_cp44_proteccion_csrf PASSED                      [100%]
-============================== 1 passed in 0.27s ===============================
+============================== 1 passed in 0.33s ==============================
 ```
 
 La suite completa se ejecutó de nuevo: 88 aprobadas, sin regresiones.
@@ -176,10 +176,11 @@ La suite completa se ejecutó de nuevo: 88 aprobadas, sin regresiones.
 **Resultado de la primera ejecución** (evidencia: `reportes/pruebas/cp41_ejecucion1_fallida.txt`):
 
 ```text
-tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido FAILED
+tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido FAILED    [100%]
 >       assert "$2.50" in anonimo and "para hacer un pedido" in anonimo and "cant_A01" not in anonimo
 E       assert ('$2.50' in '<!doctype html>…' and … and 'cant_A01' not in '<!doctype h…')
-tests/test_web.py:12: AssertionError
+tests\test_web.py:12: AssertionError
+============================== 1 failed in 0.36s ==============================
 ```
 
 **Análisis.** La página no tenía campos de cantidad, pero sí conservaba `<label for="cant_A01">` en cada producto. Esa etiqueta apuntaba a un control inexistente. **Causa raíz:** la plantilla `menu.html` condicionaba el `<input>` a la sesión, pero no la `<label>`. **Impacto:** defecto de accesibilidad: los lectores de pantalla anuncian un campo que no existe, y el HTML es inválido. **Severidad:** baja.
@@ -190,7 +191,7 @@ tests/test_web.py:12: AssertionError
 
 ```text
 tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido PASSED    [100%]
-============================== 1 passed in 0.15s ===============================
+============================== 1 passed in 0.27s ==============================
 ```
 
 Suite completa: 88 aprobadas.

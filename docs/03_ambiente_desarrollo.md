@@ -4,9 +4,9 @@
 
 | Propósito | Herramienta | Versión | Motivo de la elección |
 |---|---|---|---|
-| Lenguaje | Python | 3.11 o superior (probado en 3.12.3) | Sintaxis clara, biblioteca estándar con SQLite incluido. |
+| Lenguaje | Python | 3.11 o superior (probado en 3.13.14) | Sintaxis clara, biblioteca estándar con SQLite incluido. |
 | Framework web | Flask | 3.1.3 | Microframework con blueprints, plantillas Jinja2 y cliente de pruebas integrado. |
-| Base de datos | SQLite (módulo `sqlite3`) | 3.45 (incluida en Python) | Persistencia en archivo sin instalar un servidor. |
+| Base de datos | SQLite (módulo `sqlite3`) | 3.50.4 (incluida en Python) | Persistencia en archivo sin instalar un servidor. |
 | Editor / IDE | Visual Studio Code + extensiones *Python*, *Pylint*, *Flake8*, *Markdown Preview Mermaid Support* | — | Gratuito, multiplataforma, integra análisis y depuración. |
 | Control de versiones | Git + GitHub | Git ≥ 2.40 | Requerido por la cátedra; revisiones mediante *pull requests*. |
 | Integración continua | GitHub Actions (`.github/workflows/ci.yml`) | — | Ejecuta pruebas y análisis en cada *push* y *pull request*. |
