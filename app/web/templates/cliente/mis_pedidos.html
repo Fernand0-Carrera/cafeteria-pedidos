@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %}Mis pedidos{% endblock %}
+{% block cabeza %}<meta http-equiv="refresh" content="30">{% endblock %}
+{% block contenido %}
+<h1>Mis pedidos</h1>
+<p class="suave">Esta página se actualiza sola cada 30 segundos.</p>
+{% if not pedidos %}
+  <div class="vacio">Aún no tienes pedidos. <a href="{{ url_for('cliente.menu') }}">Revisa el menú</a> para hacer el primero.</div>
+{% else %}
+<div class="tabla-contenedor">
+<table>
+  <thead><tr><th>Pedido</th><th>Registrado</th><th>Código de retiro</th><th>Estado</th><th class="num">Total</th></tr></thead>
+  <tbody>
+  {% for p in pedidos %}
+    <tr>
+      <td><a href="{{ url_for('cliente.detalle_pedido', pedido_id=p.id) }}">#{{ p.id }}</a></td>
+      <td>{{ p.fecha_registro }}</td>
+      <td><strong style="font-family: ui-monospace, Consolas, monospace; letter-spacing:.1em">{{ p.codigo_retiro }}</strong></td>
+      <td><span class="estado estado-{{ p.estado.value }}">{{ p.estado.etiqueta }}</span></td>
+      <td class="num">{{ p.total_centavos|dinero }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block titulo %}Error {{ codigo }}{% endblock %}
+{% block contenido %}
+<h1>No se pudo completar la acción</h1>
+<div class="aviso aviso-error" role="alert">{{ mensaje }}</div>
+<div class="acciones"><a class="boton" href="{{ url_for('inicio') }}">Volver al inicio</a></div>
+{% endblock %}

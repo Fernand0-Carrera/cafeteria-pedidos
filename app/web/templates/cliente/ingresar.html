@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block titulo %}Ingresar{% endblock %}
+{% block contenido %}
+<h1>Ingresar</h1>
+<p class="suave">Usa la cédula y el correo con los que te registraste. ¿Primera vez? <a href="{{ url_for('cliente.registro') }}">Crea tu cuenta</a>.</p>
+<form class="formulario" method="post">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <input type="hidden" name="siguiente" value="{{ siguiente }}">
+  <div class="campo"><label for="cedula">Cédula</label><input id="cedula" name="cedula" type="text" inputmode="numeric" maxlength="10" value="{{ cedula }}" required></div>
+  <div class="campo"><label for="correo">Correo institucional</label><input id="correo" name="correo" type="email" autocomplete="email" required></div>
+  <button class="boton-principal">Ingresar</button>
+</form>
+{% endblock %}
