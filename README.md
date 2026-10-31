@@ -2,7 +2,7 @@
 
 Aplicación web para consultar el menú, registrar pedidos anticipados y retirarlos con un código. Proyecto de Construcción y Evolución de Software · **Release 1.0** (27 de noviembre de 2026).
 
-**Integrantes:** Fernando Carrera (`@fernand0-carrera`)
+**Integrantes:** Domenica Astudillo, Fernando Carrera, Guillermo Cevallos, Matthew Redin.
 
 ## Funcionalidades
 
