@@ -65,7 +65,7 @@ def test_cp43_control_de_acceso(app):
     registrar_web(ana)
     ana.post("/pedido/revisar", data={"cant_A01": "1"})
     ana.post("/pedido/confirmar", data={"total_mostrado": "250"})
-    registrar_web(luis, cedula_prefijo="090123456", correo="luis@universidad.edu.ec")
+    registrar_web(luis, cedula_prefijo="090123456", correo="luis@epn.edu.ec")
     assert luis.get("/mis-pedidos/1").status_code == 400
 
 
@@ -132,6 +132,6 @@ def test_paginas_publicas_y_errores(web):
     assert web.get("/no-existe").status_code == 404
     registrar_web(web)
     web.post("/salir")
-    respuesta = web.post("/ingresar", data={"cedula": "1710034065", "correo": "ana@universidad.edu.ec",
+    respuesta = web.post("/ingresar", data={"cedula": "1710034065", "correo": "ana@epn.edu.ec",
                                             "siguiente": "//sitio-malicioso.com"})
     assert respuesta.headers["Location"] == "/menu"

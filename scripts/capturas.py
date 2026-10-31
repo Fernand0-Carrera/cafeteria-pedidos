@@ -33,7 +33,7 @@ def flujo_registro_de_pedido(cliente):
     foto(cliente, "01_inicio.png")
     cliente.goto(BASE + "/registro")
     for campo, valor in (("#nombre", "Ana"), ("#apellido", "Pérez"), ("#cedula", "1710034065"),
-                         ("#celular", "0991234567"), ("#correo", "ana.perez@universidad.edu.ec")):
+                         ("#celular", "0991234567"), ("#correo", "ana.perez@epn.edu.ec")):
         cliente.fill(campo, valor)
     foto(cliente, "02_registro.png")
     cliente.click("text=Crear mi cuenta >> nth=-1")

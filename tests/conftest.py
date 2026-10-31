@@ -17,7 +17,7 @@ from app.servicios.cliente_servicio import ClienteServicio
 from app.servicios.menu_servicio import MenuServicio
 from app.servicios.pedido_servicio import PedidoServicio
 
-DOMINIO = "universidad.edu.ec"
+DOMINIO = "epn.edu.ec"
 
 
 def cedula_valida(prefijo: str) -> str:
@@ -61,14 +61,14 @@ def pedidos(conexion):
 def cliente(clientes):
     """Cliente Ana Pérez ya registrado."""
     return clientes.registrar("Ana", "Pérez", cedula_valida("171003406"), "0991234567",
-                              "ana@universidad.edu.ec")
+                              "ana@epn.edu.ec")
 
 
 @pytest.fixture
 def otro_cliente(clientes):
     """Segundo cliente, Luis Mora."""
     return clientes.registrar("Luis", "Mora", cedula_valida("090123456"), "0987654321",
-                              "luis@universidad.edu.ec")
+                              "luis@epn.edu.ec")
 
 
 @pytest.fixture
@@ -97,7 +97,7 @@ def web(app):
     return app.test_client()
 
 
-def registrar_web(cliente_http, cedula_prefijo="171003406", correo="ana@universidad.edu.ec"):
+def registrar_web(cliente_http, cedula_prefijo="171003406", correo="ana@epn.edu.ec"):
     """Registra a un cliente desde el formulario web."""
     return cliente_http.post("/registro", data={
         "nombre": "Ana", "apellido": "Pérez", "cedula": cedula_valida(cedula_prefijo),

@@ -74,7 +74,7 @@ def validar_correo_institucional(correo: str, dominio: str) -> str:
 
     Args:
         correo: Correo ingresado.
-        dominio: Dominio institucional configurado, por ejemplo ``universidad.edu.ec``.
+        dominio: Dominio institucional configurado, por ejemplo ``epn.edu.ec``.
 
     Returns:
         El correo normalizado en minúsculas.
