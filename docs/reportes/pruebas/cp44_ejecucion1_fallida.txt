@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/cafeteria-pedidos
+plugins: cov-7.1.0
+collecting ... collected 1 item
+
+tests/test_web.py::test_cp44_proteccion_csrf FAILED                      [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_cp44_proteccion_csrf ___________________________
+
+tmp_path = PosixPath('/tmp/pytest/test_cp44_proteccion_csrf0')
+
+    def test_cp44_proteccion_csrf(tmp_path):
+        """CP-44: un formulario enviado sin el token de la sesión se rechaza."""
+        app = create_app({"DATABASE": str(tmp_path / "csrf.db"), "SECRET_KEY": "x", "TESTING": True})
+        cliente = app.test_client()
+        respuesta = cliente.post("/personal/ingresar", data={"usuario": "admin", "clave": "cafeteria2026"})
+>       assert respuesta.status_code == 400 and "expiró" in respuesta.get_data(as_text=True)
+E       assert (302 == 400)
+E        +  where 302 = <WrapperTestResponse streamed [302 FOUND]>.status_code
+
+tests/test_web.py:75: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_web.py::test_cp44_proteccion_csrf - assert (302 == 400)
+============================== 1 failed in 0.24s ===============================

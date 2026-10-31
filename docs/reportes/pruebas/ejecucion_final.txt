@@ -1,0 +1,128 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/cafeteria-pedidos
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0
+collecting ... collected 88 items
+
+tests/test_cliente_personal.py::test_cp36_registro_de_cliente PASSED     [  1%]
+tests/test_cliente_personal.py::test_cp37_cliente_duplicado_o_datos_invalidos PASSED [  2%]
+tests/test_cliente_personal.py::test_cp38_identificacion_de_cliente PASSED [  3%]
+tests/test_cliente_personal.py::test_cp39_autenticacion_del_personal PASSED [  4%]
+tests/test_cliente_personal.py::test_cp40_la_informacion_persiste_entre_ejecuciones PASSED [  5%]
+tests/test_menu_servicio.py::test_cp09_menu_del_cliente_muestra_solo_disponibles PASSED [  6%]
+tests/test_menu_servicio.py::test_cp10_registrar_producto_valido PASSED  [  7%]
+tests/test_menu_servicio.py::test_cp11_registrar_producto_duplicado_o_invalido PASSED [  9%]
+tests/test_menu_servicio.py::test_cp12_actualizar_producto PASSED        [ 10%]
+tests/test_menu_servicio.py::test_cp13_cambiar_disponibilidad PASSED     [ 11%]
+tests/test_pedido_servicio.py::test_cp14_total_es_suma_de_precio_por_cantidad PASSED [ 12%]
+tests/test_pedido_servicio.py::test_cp15_pedido_sin_productos_es_rechazado PASSED [ 13%]
+tests/test_pedido_servicio.py::test_cp16a_cantidad_escrita_no_entera_positiva_es_rechazada[-1] PASSED [ 14%]
+tests/test_pedido_servicio.py::test_cp16a_cantidad_escrita_no_entera_positiva_es_rechazada[1.5] PASSED [ 15%]
+tests/test_pedido_servicio.py::test_cp16a_cantidad_escrita_no_entera_positiva_es_rechazada[abc] PASSED [ 17%]
+tests/test_pedido_servicio.py::test_cp16a_cantidad_escrita_no_entera_positiva_es_rechazada[2e1] PASSED [ 18%]
+tests/test_pedido_servicio.py::test_cp16a_cantidad_escrita_no_entera_positiva_es_rechazada[\xb2] PASSED [ 19%]
+tests/test_pedido_servicio.py::test_cp16a_cantidad_escrita_no_entera_positiva_es_rechazada[ - 3] PASSED [ 20%]
+tests/test_pedido_servicio.py::test_cp16b_cantidad_no_entera_positiva_es_rechazada_en_servicio[0] PASSED [ 21%]
+tests/test_pedido_servicio.py::test_cp16b_cantidad_no_entera_positiva_es_rechazada_en_servicio[-2] PASSED [ 22%]
+tests/test_pedido_servicio.py::test_cp16b_cantidad_no_entera_positiva_es_rechazada_en_servicio[1.5] PASSED [ 23%]
+tests/test_pedido_servicio.py::test_cp16b_cantidad_no_entera_positiva_es_rechazada_en_servicio[True] PASSED [ 25%]
+tests/test_pedido_servicio.py::test_cp16b_cantidad_no_entera_positiva_es_rechazada_en_servicio[3] PASSED [ 26%]
+tests/test_pedido_servicio.py::test_cp17_cantidad_mayor_al_maximo_es_rechazada PASSED [ 27%]
+tests/test_pedido_servicio.py::test_cp18_producto_no_disponible_es_rechazado PASSED [ 28%]
+tests/test_pedido_servicio.py::test_cp19_producto_inexistente_es_rechazado PASSED [ 29%]
+tests/test_pedido_servicio.py::test_cp20_confirmar_registra_pedido_pendiente_con_codigo PASSED [ 30%]
+tests/test_pedido_servicio.py::test_cp21a_codigos_de_retiro_son_unicos PASSED [ 31%]
+tests/test_pedido_servicio.py::test_cp21b_colision_de_codigo_genera_otro PASSED [ 32%]
+tests/test_pedido_servicio.py::test_cp21c_generador_falla_si_no_encuentra_codigo_libre PASSED [ 34%]
+tests/test_pedido_servicio.py::test_cp22_precio_del_pedido_no_cambia_si_cambia_el_menu PASSED [ 35%]
+tests/test_pedido_servicio.py::test_cp23_total_desactualizado_no_confirma PASSED [ 36%]
+tests/test_pedido_servicio.py::test_cp24_producto_agotado_entre_revision_y_confirmacion PASSED [ 37%]
+tests/test_pedido_servicio.py::test_cp25_cliente_solo_consulta_sus_pedidos PASSED [ 38%]
+tests/test_pedido_servicio.py::test_cp26_avance_de_estados_en_orden PASSED [ 39%]
+tests/test_pedido_servicio.py::test_cp27_no_se_puede_saltar_estados PASSED [ 40%]
+tests/test_pedido_servicio.py::test_cp28_no_se_puede_retroceder_ni_repetir PASSED [ 42%]
+tests/test_pedido_servicio.py::test_cp29_entregado_exige_codigo PASSED   [ 43%]
+tests/test_pedido_servicio.py::test_cp30_entrega_con_codigo_correcto[str] PASSED [ 44%]
+tests/test_pedido_servicio.py::test_cp30_entrega_con_codigo_correcto[lower] PASSED [ 45%]
+tests/test_pedido_servicio.py::test_cp30_entrega_con_codigo_correcto[<lambda>0] PASSED [ 46%]
+tests/test_pedido_servicio.py::test_cp30_entrega_con_codigo_correcto[<lambda>1] PASSED [ 47%]
+tests/test_pedido_servicio.py::test_cp31_entrega_con_codigo_incorrecto PASSED [ 48%]
+tests/test_pedido_servicio.py::test_cp32_no_se_entrega_si_no_esta_listo PASSED [ 50%]
+tests/test_pedido_servicio.py::test_cp33_no_se_entrega_dos_veces PASSED  [ 51%]
+tests/test_pedido_servicio.py::test_cp34_historial_registra_cada_cambio PASSED [ 52%]
+tests/test_pedido_servicio.py::test_cp35_concurrencia_optimista PASSED   [ 53%]
+tests/test_pedido_servicio.py::test_estado_siguiente_y_etiquetas PASSED  [ 54%]
+tests/test_validaciones.py::test_cp01_cedula_valida_es_aceptada PASSED   [ 55%]
+tests/test_validaciones.py::test_cp02_cedula_con_verificador_incorrecto_es_rechazada PASSED [ 56%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[-10 d\xedgitos] PASSED [ 57%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[171003406-10 d\xedgitos] PASSED [ 59%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[17100340651-10 d\xedgitos] PASSED [ 60%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[17A0034065-10 d\xedgitos] PASSED [ 61%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[2510034065-provincia] PASSED [ 62%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[0010034065-provincia] PASSED [ 63%]
+tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[1760034065-tercer d\xedgito] PASSED [ 64%]
+tests/test_validaciones.py::test_cp04_correo_institucional_valido[Ana@Universidad.edu.ec] PASSED [ 65%]
+tests/test_validaciones.py::test_cp04_correo_institucional_valido[a.b-c@estud.universidad.edu.ec] PASSED [ 67%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@gmail.com] PASSED [ 68%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@universidad.edu.ec.com] PASSED [ 69%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@fakeuniversidad.edu.ec] PASSED [ 70%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana] PASSED [ 71%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[@universidad.edu.ec] PASSED [ 72%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[a na@universidad.edu.ec] PASSED [ 73%]
+tests/test_validaciones.py::test_cp06_celular_y_nombre PASSED            [ 75%]
+tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[1.50-150] PASSED [ 76%]
+tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[1,5-150] PASSED [ 77%]
+tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[2-200] PASSED [ 78%]
+tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[ 0.05 -5] PASSED [ 79%]
+tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[1000-100000] PASSED [ 80%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[0] PASSED [ 81%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[-1] PASSED [ 82%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[1.505] PASSED [ 84%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[abc] PASSED [ 85%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[] PASSED [ 86%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[1000.01] PASSED [ 87%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[NaN] PASSED [ 88%]
+tests/test_validaciones.py::test_cp08_precio_invalido_es_rechazado[Infinity] PASSED [ 89%]
+tests/test_validaciones.py::test_formato_de_dinero_y_codigo_de_producto PASSED [ 90%]
+tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido PASSED    [ 92%]
+tests/test_web.py::test_cp42_flujo_completo_preparacion_y_entrega PASSED [ 93%]
+tests/test_web.py::test_cp43_control_de_acceso PASSED                    [ 94%]
+tests/test_web.py::test_cp44_proteccion_csrf PASSED                      [ 95%]
+tests/test_web.py::test_cp45_mensajes_de_error_en_el_pedido PASSED       [ 96%]
+tests/test_web.py::test_cp46_precio_cambiado_antes_de_confirmar_web PASSED [ 97%]
+tests/test_web.py::test_cp47_mantenimiento_del_menu_web PASSED           [ 98%]
+tests/test_web.py::test_paginas_publicas_y_errores PASSED                [100%]
+
+---- generated xml file: /home/claude/reportes/pruebas/resultados_junit.xml ----
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+app/__init__.py                         45     10     12      4    72%   38->40, 42, 44, 58-65, 77->80
+app/config.py                           13      0      0      0   100%
+app/datos_demo.py                       13      0      4      0   100%
+app/dominio/__init__.py                  0      0      0      0   100%
+app/dominio/excepciones.py              23      0      0      0   100%
+app/dominio/modelos.py                  74      0      0      0   100%
+app/dominio/validaciones.py             67      0     24      0   100%
+app/persistencia/__init__.py             0      0      0      0   100%
+app/persistencia/db.py                  11      0      0      0   100%
+app/persistencia/repositorios.py       103      2      8      2    96%   70, 214
+app/servicios/__init__.py                0      0      0      0   100%
+app/servicios/cliente_servicio.py       26      0      6      0   100%
+app/servicios/generador_codigo.py        8      0      0      0   100%
+app/servicios/menu_servicio.py          52      0      6      0   100%
+app/servicios/pedido_servicio.py       108      1     40      1    99%   172
+app/servicios/personal_servicio.py      28      0      8      0   100%
+app/web/__init__.py                      0      0      0      0   100%
+app/web/cliente.py                      86     10      6      2    87%   22-24, 28, 39-41, 45, 88-89
+app/web/comun.py                        85      3     18      1    96%   66, 118-119
+app/web/personal.py                    112     18      8      2    83%   39-41, 50-51, 67-70, 83-84, 123-124, 138-140, 143-147
+--------------------------------------------------------------------------------
+TOTAL                                  854     44    140     12    94%
+Coverage HTML written to dir /home/claude/reportes/cobertura/html
+============================== 88 passed in 2.64s ==============================

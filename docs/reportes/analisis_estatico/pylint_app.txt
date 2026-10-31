@@ -1,0 +1,112 @@
+
+
+Report
+======
+895 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |22     |22         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |30     |30         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |68     |68         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |65     |65         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    app (capturas,run)
+      \-dominio 
+      | \-excepciones (app.servicios.cliente_servicio,app.servicios.menu_servicio,app.servicios.pedido_servicio,app.servicios.personal_servicio,app.web.cliente,app.web.comun,app.web.personal)
+      | \-modelos (app.persistencia.repositorios,app.servicios.cliente_servicio,app.servicios.menu_servicio,app.servicios.pedido_servicio,app.web.personal)
+      | \-validaciones (app.servicios.cliente_servicio,app.servicios.menu_servicio,app.servicios.pedido_servicio,app.web.comun)
+      \-persistencia 
+      | \-db (app.web.comun)
+      | \-repositorios (app.servicios.cliente_servicio,app.servicios.menu_servicio,app.servicios.pedido_servicio,app.servicios.personal_servicio)
+      \-servicios 
+        \-cliente_servicio (app.web.comun)
+        \-menu_servicio (app.web.comun)
+        \-pedido_servicio (app.web.comun)
+        \-personal_servicio (app.web.comun,app.web.personal)
+    click (app.web.comun)
+    flask (app,app.web.cliente,app.web.comun,app.web.personal)
+    playwright 
+      \-sync_api (capturas)
+    werkzeug 
+      \-security (app.servicios.personal_servicio)
+      \-serving (capturas)
+
+
+
+1936 lines have been analyzed
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |1225   |63.27 |1225     |=          |
++----------+-------+------+---------+-----------+
+|docstring |363    |18.75 |363      |=          |
++----------+-------+------+---------+-----------+
+|comment   |9      |0.46  |9        |=          |
++----------+-------+------+---------+-----------+
+|empty     |339    |17.51 |339      |=          |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |=          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |0      |0        |=          |
++-----------+-------+---------+-----------+
+|refactor   |0      |0        |=          |
++-----------+-------+---------+-----------+
+|warning    |0      |0        |=          |
++-----------+-------+---------+-----------+
+|error      |0      |0        |=          |
++-----------+-------+---------+-----------+
+
+
+
+Messages
+--------
+
++-----------+------------+
+|message id |occurrences |
++===========+============+
+
+
+
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+

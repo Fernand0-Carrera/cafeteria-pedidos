@@ -1,0 +1,3 @@
+=========================== short test summary info ============================
+FAILED tests/test_web.py::test_cp44_proteccion_csrf - assert (302 == 400)
+1 failed, 87 passed in 2.19s

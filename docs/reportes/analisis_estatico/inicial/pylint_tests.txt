@@ -1,0 +1,25 @@
+************* Module tests.test_pedido_servicio
+tests/test_pedido_servicio.py:187:0: C0301: Line too long (121/120) (line-too-long)
+************* Module tests.conftest
+tests/conftest.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:37:9: W0621: Redefining name 'conexion' from outer scope (line 27) (redefined-outer-name)
+tests/conftest.py:42:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:42:13: W0621: Redefining name 'conexion' from outer scope (line 27) (redefined-outer-name)
+tests/conftest.py:47:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:47:12: W0621: Redefining name 'conexion' from outer scope (line 27) (redefined-outer-name)
+tests/conftest.py:52:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:52:12: W0621: Redefining name 'clientes' from outer scope (line 42) (redefined-outer-name)
+tests/conftest.py:58:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:58:17: W0621: Redefining name 'clientes' from outer scope (line 42) (redefined-outer-name)
+tests/conftest.py:64:17: W0621: Redefining name 'pedidos' from outer scope (line 47) (redefined-outer-name)
+tests/conftest.py:64:26: W0621: Redefining name 'cliente' from outer scope (line 52) (redefined-outer-name)
+tests/conftest.py:73:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:84:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:84:8: W0621: Redefining name 'app' from outer scope (line 73) (redefined-outer-name)
+tests/conftest.py:88:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:94:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/conftest.py:98:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+-----------------------------------
+Your code has been rated at 9.55/10
+

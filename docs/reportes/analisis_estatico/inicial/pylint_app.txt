@@ -1,0 +1,8 @@
+************* Module app.dominio.modelos
+app/dominio/modelos.py:114:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+************* Module capturas
+scripts/capturas.py:24:0: R0915: Too many statements (70/50) (too-many-statements)
+
+-----------------------------------
+Your code has been rated at 9.98/10
+

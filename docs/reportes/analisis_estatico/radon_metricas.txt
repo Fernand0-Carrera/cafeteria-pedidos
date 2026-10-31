@@ -1,0 +1,252 @@
+app/config.py
+    LOC: 20
+    LLOC: 15
+    SLOC: 13
+    Comments: 2
+    Single comments: 2
+    Multi: 0
+    Blank: 5
+    - Comment Stats
+        (C % L): 10%
+        (C % S): 15%
+        (C + M % L): 10%
+app/__init__.py
+    LOC: 80
+    LLOC: 50
+    SLOC: 48
+    Comments: 1
+    Single comments: 3
+    Multi: 12
+    Blank: 17
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 2%
+        (C + M % L): 16%
+app/datos_demo.py
+    LOC: 36
+    LLOC: 15
+    SLOC: 24
+    Comments: 0
+    Single comments: 1
+    Multi: 4
+    Blank: 7
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 11%
+app/dominio/excepciones.py
+    LOC: 80
+    LLOC: 37
+    SLOC: 23
+    Comments: 0
+    Single comments: 12
+    Multi: 9
+    Blank: 36
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 11%
+app/dominio/__init__.py
+    LOC: 1
+    LLOC: 1
+    SLOC: 0
+    Comments: 0
+    Single comments: 1
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+app/dominio/validaciones.py
+    LOC: 123
+    LLOC: 78
+    SLOC: 67
+    Comments: 1
+    Single comments: 7
+    Multi: 21
+    Blank: 28
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 1%
+        (C + M % L): 18%
+app/dominio/modelos.py
+    LOC: 140
+    LLOC: 120
+    SLOC: 79
+    Comments: 1
+    Single comments: 12
+    Multi: 12
+    Blank: 37
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 1%
+        (C + M % L): 9%
+app/web/cliente.py
+    LOC: 124
+    LLOC: 97
+    SLOC: 92
+    Comments: 0
+    Single comments: 9
+    Multi: 0
+    Blank: 23
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+app/web/comun.py
+    LOC: 135
+    LLOC: 97
+    SLOC: 90
+    Comments: 2
+    Single comments: 12
+    Multi: 0
+    Blank: 33
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 2%
+        (C + M % L): 1%
+app/web/__init__.py
+    LOC: 1
+    LLOC: 1
+    SLOC: 0
+    Comments: 0
+    Single comments: 1
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+app/web/personal.py
+    LOC: 167
+    LLOC: 126
+    SLOC: 129
+    Comments: 0
+    Single comments: 11
+    Multi: 0
+    Blank: 27
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+app/servicios/__init__.py
+    LOC: 1
+    LLOC: 1
+    SLOC: 0
+    Comments: 0
+    Single comments: 1
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+app/servicios/personal_servicio.py
+    LOC: 52
+    LLOC: 33
+    SLOC: 28
+    Comments: 0
+    Single comments: 3
+    Multi: 8
+    Blank: 13
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 15%
+app/servicios/pedido_servicio.py
+    LOC: 252
+    LLOC: 123
+    SLOC: 149
+    Comments: 3
+    Single comments: 8
+    Multi: 57
+    Blank: 38
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 2%
+        (C + M % L): 24%
+app/servicios/menu_servicio.py
+    LOC: 95
+    LLOC: 60
+    SLOC: 60
+    Comments: 0
+    Single comments: 5
+    Multi: 13
+    Blank: 17
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 14%
+app/servicios/generador_codigo.py
+    LOC: 23
+    LLOC: 11
+    SLOC: 8
+    Comments: 1
+    Single comments: 3
+    Multi: 4
+    Blank: 8
+    - Comment Stats
+        (C % L): 4%
+        (C % S): 12%
+        (C + M % L): 22%
+app/servicios/cliente_servicio.py
+    LOC: 61
+    LLOC: 31
+    SLOC: 38
+    Comments: 0
+    Single comments: 3
+    Multi: 9
+    Blank: 11
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 15%
+app/persistencia/__init__.py
+    LOC: 1
+    LLOC: 1
+    SLOC: 0
+    Comments: 0
+    Single comments: 1
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+app/persistencia/repositorios.py
+    LOC: 280
+    LLOC: 135
+    SLOC: 197
+    Comments: 2
+    Single comments: 28
+    Multi: 9
+    Blank: 46
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 1%
+        (C + M % L): 4%
+app/persistencia/db.py
+    LOC: 87
+    LLOC: 14
+    SLOC: 63
+    Comments: 0
+    Single comments: 1
+    Multi: 8
+    Blank: 15
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 9%
+** Total **
+    LOC: 1759
+    LLOC: 1046
+    SLOC: 1108
+    Comments: 13
+    Single comments: 124
+    Multi: 166
+    Blank: 361
+    - Comment Stats
+        (C % L): 1%
+        (C % S): 1%
+        (C + M % L): 10%
