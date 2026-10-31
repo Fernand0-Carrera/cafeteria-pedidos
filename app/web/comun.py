@@ -85,8 +85,11 @@ def registrar(aplicacion: Flask) -> None:
     @aplicacion.before_request
     def verificar_csrf():
         if request.method == "POST" and aplicacion.config["CSRF_HABILITADO"]:
+            esperado = session.get("csrf")
             enviado = request.form.get("csrf", "")
-            if not secrets.compare_digest(enviado, session.get("csrf", "")):
+            # Sin token en la sesión no hay nada con qué comparar: se rechaza
+            # (antes "" == "" permitía el envío; ver CP-44 en la documentación de pruebas).
+            if not esperado or not secrets.compare_digest(enviado, esperado):
                 abort(400, "El formulario expiró. Vuelva a cargar la página e inténtelo de nuevo.")
 
     @aplicacion.context_processor
