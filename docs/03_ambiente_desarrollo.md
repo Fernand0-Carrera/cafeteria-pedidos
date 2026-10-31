@@ -115,7 +115,7 @@ Una historia está terminada cuando: cumple todos sus criterios de aceptación; 
 ## 3.6 Preparación del entorno
 
 ```bash
-git clone https://github.com/<organizacion>/cafeteria-pedidos.git
+git clone https://github.com/fernand0-carrera/cafeteria-pedidos.git
 cd cafeteria-pedidos
 python -m venv .venv
 # Windows: .venv\Scripts\activate      Linux/macOS: source .venv/bin/activate

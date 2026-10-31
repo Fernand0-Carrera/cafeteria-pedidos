@@ -1,7 +1,7 @@
 ============================= test session starts ==============================
 platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
 cachedir: .pytest_cache
-rootdir: /home/claude/cafeteria-pedidos
+rootdir: /home/fernando/cafeteria-pedidos
 configfile: pyproject.toml
 testpaths: tests
 plugins: cov-7.1.0
@@ -64,14 +64,14 @@ tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[1
 tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[2510034065-provincia] PASSED [ 62%]
 tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[0010034065-provincia] PASSED [ 63%]
 tests/test_validaciones.py::test_cp03_cedula_con_formato_invalido_es_rechazada[1760034065-tercer d\xedgito] PASSED [ 64%]
-tests/test_validaciones.py::test_cp04_correo_institucional_valido[Ana@Universidad.edu.ec] PASSED [ 65%]
-tests/test_validaciones.py::test_cp04_correo_institucional_valido[a.b-c@estud.universidad.edu.ec] PASSED [ 67%]
+tests/test_validaciones.py::test_cp04_correo_institucional_valido[Ana@Epn.edu.ec] PASSED [ 65%]
+tests/test_validaciones.py::test_cp04_correo_institucional_valido[a.b-c@estud.epn.edu.ec] PASSED [ 67%]
 tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@gmail.com] PASSED [ 68%]
-tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@universidad.edu.ec.com] PASSED [ 69%]
-tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@fakeuniversidad.edu.ec] PASSED [ 70%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@epn.edu.ec.com] PASSED [ 69%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana@fakeepn.edu.ec] PASSED [ 70%]
 tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[ana] PASSED [ 71%]
-tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[@universidad.edu.ec] PASSED [ 72%]
-tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[a na@universidad.edu.ec] PASSED [ 73%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[@epn.edu.ec] PASSED [ 72%]
+tests/test_validaciones.py::test_cp05_correo_no_institucional_es_rechazado[a na@epn.edu.ec] PASSED [ 73%]
 tests/test_validaciones.py::test_cp06_celular_y_nombre PASSED            [ 75%]
 tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[1.50-150] PASSED [ 76%]
 tests/test_validaciones.py::test_cp07_precio_se_convierte_a_centavos[1,5-150] PASSED [ 77%]
@@ -96,7 +96,7 @@ tests/test_web.py::test_cp46_precio_cambiado_antes_de_confirmar_web PASSED [ 97%
 tests/test_web.py::test_cp47_mantenimiento_del_menu_web PASSED           [ 98%]
 tests/test_web.py::test_paginas_publicas_y_errores PASSED                [100%]
 
----- generated xml file: /home/claude/reportes/pruebas/resultados_junit.xml ----
+---- generated xml file: /home/fernando/reportes/pruebas/resultados_junit.xml ----
 ================================ tests coverage ================================
 _______________ coverage: platform linux, python 3.12.3-final-0 ________________
 
@@ -124,5 +124,5 @@ app/web/comun.py                        85      3     18      1    96%   66, 118
 app/web/personal.py                    112     18      8      2    83%   39-41, 50-51, 67-70, 83-84, 123-124, 138-140, 143-147
 --------------------------------------------------------------------------------
 TOTAL                                  854     44    140     12    94%
-Coverage HTML written to dir /home/claude/reportes/cobertura/html
+Coverage HTML written to dir /home/fernando/reportes/cobertura/html
 ============================== 88 passed in 2.64s ==============================

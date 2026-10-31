@@ -24,7 +24,7 @@ Si no está instalado, descárguelo de <https://www.python.org/downloads/>. En W
 ## 7.2 Obtener el código
 
 ```bash
-git clone https://github.com/<organizacion>/cafeteria-pedidos.git
+git clone https://github.com/fernand0-carrera/cafeteria-pedidos.git
 cd cafeteria-pedidos
 ```
 
@@ -58,7 +58,7 @@ La aplicación funciona sin configurar nada. Para adaptarla, defina estas variab
 
 | Variable | Valor por defecto | Para qué sirve |
 |---|---|---|
-| `CAFETERIA_DOMINIO_CORREO` | `universidad.edu.ec` | Dominio aceptado para el correo institucional de los clientes. |
+| `CAFETERIA_DOMINIO_CORREO` | `epn.edu.ec` | Dominio aceptado para el correo institucional de los clientes. |
 | `CAFETERIA_ADMIN_USUARIO` | `admin` | Usuario del personal que se crea en la primera ejecución. |
 | `CAFETERIA_ADMIN_CLAVE` | `cafeteria2026` | Clave de ese usuario (mínimo 8 caracteres). **Cámbiela en una instalación real.** |
 | `CAFETERIA_DATOS_DEMO` | `1` | `1` carga 9 productos de ejemplo si el menú está vacío; `0` inicia con el menú vacío. |

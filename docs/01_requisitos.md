@@ -212,7 +212,7 @@ La especificación deja abiertos varios puntos. El equipo tomó las decisiones s
 | # | Ambigüedad | Decisión | Justificación |
 |---|---|---|---|
 | A-01 | ¿Cómo se identifica el cliente para consultar sus pedidos? | Registro único con sus datos; luego ingresa con cédula y correo institucional. | La sección 7 pide identificarlo con datos personales; evita gestionar contraseñas en la primera versión. |
-| A-02 | ¿Qué es un «correo institucional»? | Correo cuyo dominio es el configurado (`CAFETERIA_DOMINIO_CORREO`, por defecto `universidad.edu.ec`) o un subdominio suyo. | Distintas instituciones usan dominios distintos; se deja configurable. |
+| A-02 | ¿Qué es un «correo institucional»? | Correo cuyo dominio es el configurado (`CAFETERIA_DOMINIO_CORREO`, por defecto `epn.edu.ec`) o un subdominio suyo. | Distintas instituciones usan dominios distintos; se deja configurable. |
 | A-03 | ¿Cómo se valida la cédula? | Algoritmo oficial de módulo 10 (personas naturales). | Evita registros con cédulas mal digitadas. |
 | A-04 | ¿Existe un límite de cantidad por producto? | Máximo 50 unidades por producto, configurable. | Previene errores de digitación (p. ej. 500 en lugar de 5). No contradice RN-NEG-01. |
 | A-05 | ¿Qué ocurre si cambia un precio entre la revisión y la confirmación? | Se rechaza la confirmación, se muestra el nuevo total y el cliente confirma otra vez. | RU-03 exige que el cliente conozca el total antes de confirmar; cobrarle un total distinto lo contradiría. |

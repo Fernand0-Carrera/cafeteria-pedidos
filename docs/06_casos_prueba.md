@@ -49,8 +49,8 @@ Columnas: **Esperado** = resultado esperado; **Obtenido** = resultado de la ejec
 | CP-01 | RF-01 | Partición (válida) | `" 1710034065 "`, cédula de provincia 30 | Se acepta sin espacios | Aceptadas | Aprobado |
 | CP-02 | RF-01 | Partición (inválida) | `1710034064` (verificador alterado) | `ValidacionError` «dígito verificador» | Rechazada con ese mensaje | Aprobado |
 | CP-03 | RF-01 | Valores límite, partición | `""`, 9 dígitos, 11 dígitos, con letra, provincia 25, provincia 00, tercer dígito 6 (7 ejecuciones) | Cada una rechazada con su motivo | 7/7 rechazadas con el motivo correcto | Aprobado |
-| CP-04 | RF-01 | Partición (válida) | `Ana@Universidad.edu.ec`, `a.b-c@estud.universidad.edu.ec` | Aceptados en minúsculas | Aceptados | Aprobado |
-| CP-05 | RF-01 | Partición (inválida) | `@gmail.com`, `…edu.ec.com`, `@fakeuniversidad.edu.ec`, sin @, sin usuario, con espacio (6 ejecuciones) | Rechazados «correo institucional» | 6/6 rechazados | Aprobado |
+| CP-04 | RF-01 | Partición (válida) | `Ana@Epn.edu.ec`, `a.b-c@estud.epn.edu.ec` | Aceptados en minúsculas | Aceptados | Aprobado |
+| CP-05 | RF-01 | Partición (inválida) | `@gmail.com`, `…edu.ec.com`, `@fakeepn.edu.ec`, sin @, sin usuario, con espacio (6 ejecuciones) | Rechazados «correo institucional» | 6/6 rechazados | Aprobado |
 | CP-06 | RF-01 | Partición, límites | Celular `099 123 4567` (válido), `0891234567`, 9 y 11 dígitos, letras; nombre `R2D2` | Válidos aceptados, inválidos rechazados | Según lo esperado | Aprobado |
 | CP-07 | HU-08 | Partición (válida) | `1.50`, `1,5`, `2`, ` 0.05 `, `1000` (5 ejecuciones) | 150, 150, 200, 5, 100000 centavos | Coinciden | Aprobado |
 | CP-08 | HU-08 | Límites, partición | `0`, `-1`, `1.505`, `abc`, `""`, `1000.01`, `NaN`, `Infinity` (8 ejecuciones) | `ValidacionError` | 8/8 rechazados | Aprobado |
