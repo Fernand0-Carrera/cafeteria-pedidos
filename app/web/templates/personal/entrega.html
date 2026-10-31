@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titulo %}Entregar pedido{% endblock %}
+{% block contenido %}
+<h1>Entregar un pedido</h1>
+<p class="suave">Pide al cliente su código de retiro y escríbelo tal como lo muestra su pantalla.</p>
+<form class="formulario" method="post" action="{{ url_for('personal.entrega') }}">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <div class="campo"><label for="codigo">Código de retiro</label><input id="codigo" name="codigo" type="text" value="{{ codigo }}" autocomplete="off" autocapitalize="characters" maxlength="10" required autofocus></div>
+  <button class="boton">Buscar pedido</button>
+</form>
+{% if pedido %}
+<h2>Pedido #{{ pedido.id }} · {{ pedido.cliente_nombre }}</h2>
+<p><span class="estado estado-{{ pedido.estado.value }}">{{ pedido.estado.etiqueta }}</span> · Total {{ pedido.total_centavos|dinero }}</p>
+<ul>{% for d in pedido.detalles %}<li>{{ d.cantidad }} × {{ d.nombre_producto }}</li>{% endfor %}</ul>
+{% if pedido.estado.value == 'LISTO_PARA_RETIRAR' %}
+<form method="post" action="{{ url_for('personal.confirmar_entrega') }}" class="acciones">
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <input type="hidden" name="pedido_id" value="{{ pedido.id }}">
+  <input type="hidden" name="codigo" value="{{ codigo }}">
+  <button class="boton-principal">Registrar entrega</button>
+</form>
+{% elif pedido.estado.value == 'ENTREGADO' %}
+<div class="aviso aviso-error" role="alert">Este pedido ya fue entregado. No lo entregues otra vez.</div>
+{% else %}
+<div class="aviso aviso-error" role="alert">Este pedido todavía no está listo para retirar.</div>
+{% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titulo %}Registro{% endblock %}
+{% block contenido %}
+<h1>Crear mi cuenta</h1>
+<p class="suave">Tus datos sirven para identificar tus pedidos. Ya registrado, <a href="{{ url_for('cliente.ingresar') }}">ingresa aquí</a>.</p>
+<form class="formulario" method="post" novalidate>
+  <input type="hidden" name="csrf" value="{{ csrf_token() }}">
+  <div class="campo"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" value="{{ datos.nombre }}" autocomplete="given-name" required></div>
+  <div class="campo"><label for="apellido">Apellido</label><input id="apellido" name="apellido" type="text" value="{{ datos.apellido }}" autocomplete="family-name" required></div>
+  <div class="campo"><label for="cedula">Cédula</label><input id="cedula" name="cedula" type="text" inputmode="numeric" maxlength="10" value="{{ datos.cedula }}" required><p class="ayuda">10 dígitos, sin guion.</p></div>
+  <div class="campo"><label for="celular">Celular</label><input id="celular" name="celular" type="text" inputmode="tel" maxlength="10" value="{{ datos.celular }}" required><p class="ayuda">Ejemplo: 0991234567</p></div>
+  <div class="campo"><label for="correo">Correo institucional</label><input id="correo" name="correo" type="email" value="{{ datos.correo }}" autocomplete="email" required><p class="ayuda">Debe terminar en @{{ config.DOMINIO_CORREO }}</p></div>
+  <button class="boton-principal">Crear mi cuenta</button>
+</form>
+{% endblock %}

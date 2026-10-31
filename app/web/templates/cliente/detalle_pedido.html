@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Pedido #{{ pedido.id }}{% endblock %}
+{% block cabeza %}{% if pedido.estado.value != 'ENTREGADO' %}<meta http-equiv="refresh" content="30">{% endif %}{% endblock %}
+{% block contenido %}
+<h1>{% if nuevo %}Pedido confirmado{% else %}Pedido #{{ pedido.id }}{% endif %}</h1>
+<div class="ticket{% if nuevo %} recien{% endif %}">
+  <p class="etiqueta">Código de retiro · pedido #{{ pedido.id }}</p>
+  <p class="codigo" id="codigo-retiro">{{ pedido.codigo_retiro }}</p>
+  <span class="estado estado-{{ pedido.estado.value }}">{{ pedido.estado.etiqueta }}</span>
+  <div class="corte"></div>
+  <p class="etiqueta">Muestra este código en el mostrador cuando el pedido esté listo para retirar. Total a pagar: <strong>{{ pedido.total_centavos|dinero }}</strong></p>
+</div>
+
+<h2>Seguimiento</h2>
+{% set fechas = {} %}{% for h in historial %}{% set _ = fechas.update({h.estado.value: h.fecha}) %}{% endfor %}
+<ol class="seguimiento">
+  {% for e in ['PENDIENTE','EN_PREPARACION','LISTO_PARA_RETIRAR','ENTREGADO'] %}
+    <li class="{% if e == pedido.estado.value %}actual{% elif e in fechas %}hecho{% endif %}">
+      {{ {'PENDIENTE':'Pendiente','EN_PREPARACION':'En preparación','LISTO_PARA_RETIRAR':'Listo para retirar','ENTREGADO':'Entregado'}[e] }}
+      {% if e in fechas %}<time>{{ fechas[e] }}</time>{% endif %}
+    </li>
+  {% endfor %}
+</ol>
+
+<h2>Detalle</h2>
+<div class="tabla-contenedor">
+<table>
+  <thead><tr><th>Producto</th><th class="num">Cantidad</th><th class="num">Precio</th><th class="num">Subtotal</th></tr></thead>
+  <tbody>
+  {% for d in pedido.detalles %}
+    <tr><td>{{ d.nombre_producto }}</td><td class="num">{{ d.cantidad }}</td><td class="num">{{ d.precio_unitario_centavos|dinero }}</td><td class="num">{{ d.subtotal_centavos|dinero }}</td></tr>
+  {% endfor %}
+  </tbody>
+  <tfoot><tr><td colspan="3">Total</td><td class="num">{{ pedido.total_centavos|dinero }}</td></tr></tfoot>
+</table>
+</div>
+<p class="suave">Registrado el {{ pedido.fecha_registro }}.</p>
+<div class="acciones"><a class="boton" href="{{ url_for('cliente.mis_pedidos') }}">Ver todos mis pedidos</a><a href="{{ url_for('cliente.menu') }}">Hacer otro pedido</a></div>
+{% endblock %}
