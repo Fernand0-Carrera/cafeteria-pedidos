@@ -13,26 +13,26 @@ from tests.conftest import cedula_valida
 def test_cp36_registro_de_cliente(clientes):
     """CP-36: el cliente se registra con sus datos y recibe un código CLI-xxxxx."""
     cliente = clientes.registrar(" Ana ", "Pérez", cedula_valida("171003406"), "0991234567",
-                                 "ANA@universidad.edu.ec")
+                                 "ANA@epn.edu.ec")
     assert cliente.codigo == "CLI-00001"
-    assert cliente.nombre_completo == "Ana Pérez" and cliente.correo == "ana@universidad.edu.ec"
+    assert cliente.nombre_completo == "Ana Pérez" and cliente.correo == "ana@epn.edu.ec"
     assert clientes.obtener(cliente.id).cedula == cedula_valida("171003406")
 
 
 def test_cp37_cliente_duplicado_o_datos_invalidos(clientes, cliente):
     """CP-37: no se repiten cédula ni correo; los datos inválidos se informan."""
     with pytest.raises(ClienteDuplicadoError, match="cédula"):
-        clientes.registrar("Otra", "Persona", cliente.cedula, "0990000000", "otra@universidad.edu.ec")
+        clientes.registrar("Otra", "Persona", cliente.cedula, "0990000000", "otra@epn.edu.ec")
     with pytest.raises(ClienteDuplicadoError, match="correo"):
         clientes.registrar("Otra", "Persona", cedula_valida("010101010"), "0990000000", cliente.correo)
     with pytest.raises(ValidacionError):
-        clientes.registrar("Otra", "Persona", "1234567890", "0990000000", "otra@universidad.edu.ec")
+        clientes.registrar("Otra", "Persona", "1234567890", "0990000000", "otra@epn.edu.ec")
 
 
 def test_cp38_identificacion_de_cliente(clientes, cliente):
     """CP-38: el cliente se identifica con cédula y correo; otras combinaciones se rechazan."""
-    assert clientes.identificar(cliente.cedula, " ANA@universidad.edu.ec ").id == cliente.id
-    for cedula, correo in [(cliente.cedula, "otro@universidad.edu.ec"),
+    assert clientes.identificar(cliente.cedula, " ANA@epn.edu.ec ").id == cliente.id
+    for cedula, correo in [(cliente.cedula, "otro@epn.edu.ec"),
                            (cedula_valida("090123456"), cliente.correo), ("", "")]:
         with pytest.raises(CredencialesInvalidasError):
             clientes.identificar(cedula, correo)
@@ -61,12 +61,12 @@ def test_cp39_autenticacion_del_personal(conexion):
 def test_cp40_la_informacion_persiste_entre_ejecuciones(tmp_path):
     """CP-40 (sección 8): productos, clientes y pedidos siguen disponibles al reiniciar."""
     ruta = str(tmp_path / "persistencia.db")
-    configuracion = {"DATABASE": ruta, "SECRET_KEY": "x", "DOMINIO_CORREO": "universidad.edu.ec"}
+    configuracion = {"DATABASE": ruta, "SECRET_KEY": "x", "DOMINIO_CORREO": "epn.edu.ec"}
     create_app(configuracion)                           # primera ejecución
     con = conectar(ruta)
     from app.servicios.cliente_servicio import ClienteServicio  # pylint: disable=import-outside-toplevel
-    cliente = ClienteServicio(con, "universidad.edu.ec").registrar(
-        "Ana", "Pérez", cedula_valida("171003406"), "0991234567", "ana@universidad.edu.ec")
+    cliente = ClienteServicio(con, "epn.edu.ec").registrar(
+        "Ana", "Pérez", cedula_valida("171003406"), "0991234567", "ana@epn.edu.ec")
     codigo = PedidoServicio(con).confirmar_pedido(cliente.id, {"A01": 1}).codigo_retiro
     con.close()
 

@@ -10,7 +10,7 @@ class Config:  # pylint: disable=too-few-public-methods
 
     SECRET_KEY = os.environ.get("CAFETERIA_SECRET_KEY")
     DATABASE = os.environ.get("CAFETERIA_DB")  # por defecto: instance/cafeteria.db
-    DOMINIO_CORREO = os.environ.get("CAFETERIA_DOMINIO_CORREO", "universidad.edu.ec")
+    DOMINIO_CORREO = os.environ.get("CAFETERIA_DOMINIO_CORREO", "epn.edu.ec")
     CANTIDAD_MAXIMA = int(os.environ.get("CAFETERIA_CANTIDAD_MAXIMA", "50"))
     CARGAR_DATOS_DEMO = os.environ.get("CAFETERIA_DATOS_DEMO", "1") == "1"
     PERSONAL_INICIAL_USUARIO = os.environ.get("CAFETERIA_ADMIN_USUARIO", "admin")
