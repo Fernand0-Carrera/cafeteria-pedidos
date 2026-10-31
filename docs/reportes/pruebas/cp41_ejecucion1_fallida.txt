@@ -1,15 +1,15 @@
-============================= test session starts ==============================
-platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\feral\AppData\Local\Programs\Python\Python313\python.exe
 cachedir: .pytest_cache
-rootdir: /home/fernando/cafeteria-pedidos
+rootdir: C:\Users\feral\Downloads\historico
 configfile: pyproject.toml
-plugins: cov-7.1.0
+plugins: platformdirs-4.14.0, cov-7.1.0
 collecting ... collected 1 item
 
 tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido FAILED    [100%]
 
-=================================== FAILURES ===================================
-_________________ test_cp41_flujo_completo_registro_de_pedido __________________
+================================== FAILURES ===================================
+_________________ test_cp41_flujo_completo_registro_de_pedido _________________
 
 web = <FlaskClient <Flask 'app'>>
 
@@ -17,7 +17,7 @@ web = <FlaskClient <Flask 'app'>>
         """CP-41 (PN-01): registro → menú → revisión con total → confirmación con código."""
         anonimo = web.get("/menu").get_data(as_text=True)
 >       assert "$2.50" in anonimo and "para hacer un pedido" in anonimo and "cant_A01" not in anonimo
-E       assert ('$2.50' in '<!doctype html>\n<html lang="es">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>Menú · Pedidos de cafetería</title>\n  <link rel="stylesheet" href="/static/estilos.css">\n  \n</head>\n<body>\n<header class="cabecera">\n  <div class="cabecera-interna">\n    <a class="marca" href="/">Cafetería unive
+E       assert ('$2.50' in '<!doctype html>\n<html lang="es">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>Menú · Pedidos de cafetería</title>\n  <link rel="stylesheet" href="/static/estilos.css">\n  \n</head>\n<body>\n<header class="cabecera">\n  <div class="cabecera-interna">\n    <a class="marca" href="/">Cafetería universitaria<small>pedidos</small></a>\n    <nav class="nav" aria-label="Principal">\n      \n        <a href="/menu" aria-current="page">Menú</a>\n        \n          <a href="/ingresar">Ingresar</a>\n          <a href="/registro">Registrarme</a>\n        \n      \n    </nav>\n  </div>\n</header>\n<main>\n  \n    \n  \n  \n<h1>Menú de hoy</h1>\n\n<form method="post" action="/pedido/revisar">\n  <input type="hidden" name="csrf" value="gj-0Enb79XsRU0l3m6LxrgOl_G2wg3u-mvBgHBG4yPs">\n  <div class="pizarra">\n    \n      <h2>Para comer</h2>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_A03">Bolón de verde <span class="codigo-prod">A03</span></label></span>\n        <span class="precio">$2.00</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <s...r="cant_B04">Agua sin gas 500 ml <span class="codigo-prod">B04</span></label></span>\n        <span class="precio">$0.75</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_B01">Café pasado <span class="codigo-prod">B01</span></label></span>\n        <span class="precio">$1.00</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_B02">Capuchino <span class="codigo-prod">B02</span></label></span>\n        <span class="precio">$1.75</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_B03">Jugo natural de naranja <span class="codigo-prod">B03</span></label></span>\n        <span class="precio">$1.50</span>\n        <span></span>\n      </div>\n      \n    \n    <div class="pie">\n      \n        <span><a href="/ingresar?siguiente=/menu">Ingresa</a> o <a href="/registro">regístrate</a> para hacer un pedido.</span>\n      \n    </div>\n  </div>\n</form>\n\n\n</main>\n<footer class="pie-pagina">Gestión de pedidos · Release 1.0.0</footer>\n</body>\n</html>' and 'para hacer un pedido' in '<!doctype html>\n<html lang="es">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>Menú · Pedidos de cafetería</title>\n  <link rel="stylesheet" href="/static/estilos.css">\n  \n</head>\n<body>\n<header class="cabecera">\n  <div class="cabecera-interna">\n    <a class="marca" href="/">Cafetería universitaria<small>pedidos</small></a>\n    <nav class="nav" aria-label="Principal">\n      \n        <a href="/menu" aria-current="page">Menú</a>\n        \n          <a href="/ingresar">Ingresar</a>\n          <a href="/registro">Registrarme</a>\n        \n      \n    </nav>\n  </div>\n</header>\n<main>\n  \n    \n  \n  \n<h1>Menú de hoy</h1>\n\n<form method="post" action="/pedido/revisar">\n  <input type="hidden" name="csrf" value="gj-0Enb79XsRU0l3m6LxrgOl_G2wg3u-mvBgHBG4yPs">\n  <div class="pizarra">\n    \n      <h2>Para comer</h2>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_A03">Bolón de verde <span class="codigo-prod">A03</span></label></span>\n        <span class="precio">$2.00</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <s...r="cant_B04">Agua sin gas 500 ml <span class="codigo-prod">B04</span></label></span>\n        <span class="precio">$0.75</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_B01">Café pasado <span class="codigo-prod">B01</span></label></span>\n        <span class="precio">$1.00</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_B02">Capuchino <span class="codigo-prod">B02</span></label></span>\n        <span class="precio">$1.75</span>\n        <span></span>\n      </div>\n      \n      <div class="linea-menu">\n        <span class="nombre"><label for="cant_B03">Jugo natural de naranja <span class="codigo-prod">B03</span></label></span>\n        <span class="precio">$1.50</span>\n        <span></span>\n      </div>\n      \n    \n    <div class="pie">\n      \n        <span><a href="/ingresar?siguiente=/menu">Ingresa</a> o <a href="/registro">regístrate</a> para hacer un pedido.</span>\n      \n    </div>\n  </div>\n</form>\n\n\n</main>\n<footer class="pie-pagina">Gestión de pedidos · Release 1.0.0</footer>\n</body>\n</html>' and 'cant_A01' not in '<!doctype h...dy>\n</html>'
 E         
 E         'cant_A01' is contained here:
 E           <!doctype html>
@@ -28,7 +28,7 @@ E             <meta name="viewport" content="width=device-width, initial-scale=1
 E         
 E         ...Full output truncated, use '-vv' to show)
 
-tests/test_web.py:12: AssertionError
-=========================== short test summary info ============================
+tests\test_web.py:12: AssertionError
+=========================== short test summary info ===========================
 FAILED tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido - asser...
-============================== 1 failed in 0.17s ===============================
+============================== 1 failed in 0.36s ==============================

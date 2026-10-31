@@ -1,16 +1,17 @@
-============================= test session starts ==============================
-platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\feral\AppData\Local\Programs\Python\Python313\python.exe
 cachedir: .pytest_cache
-rootdir: /home/fernando/cafeteria-pedidos
-plugins: cov-7.1.0
+rootdir: C:\Users\feral\Downloads\historico
+configfile: pyproject.toml
+plugins: platformdirs-4.14.0, cov-7.1.0
 collecting ... collected 1 item
 
 tests/test_web.py::test_cp44_proteccion_csrf FAILED                      [100%]
 
-=================================== FAILURES ===================================
-__________________________ test_cp44_proteccion_csrf ___________________________
+================================== FAILURES ===================================
+__________________________ test_cp44_proteccion_csrf __________________________
 
-tmp_path = PosixPath('/tmp/pytest/test_cp44_proteccion_csrf0')
+tmp_path = WindowsPath('C:/Users/feral/AppData/Local/Temp/pytest-of-feral/pytest-14/test_cp44_proteccion_csrf0')
 
     def test_cp44_proteccion_csrf(tmp_path):
         """CP-44: un formulario enviado sin el token de la sesión se rechaza."""
@@ -21,7 +22,7 @@ tmp_path = PosixPath('/tmp/pytest/test_cp44_proteccion_csrf0')
 E       assert (302 == 400)
 E        +  where 302 = <WrapperTestResponse streamed [302 FOUND]>.status_code
 
-tests/test_web.py:75: AssertionError
-=========================== short test summary info ============================
+tests\test_web.py:77: AssertionError
+=========================== short test summary info ===========================
 FAILED tests/test_web.py::test_cp44_proteccion_csrf - assert (302 == 400)
-============================== 1 failed in 0.24s ===============================
+============================== 1 failed in 0.46s ==============================

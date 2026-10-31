@@ -65,22 +65,22 @@ en un archivo <code><a href="">app.persistencia.db</a></code> (requisito de la s
 
                         <label class="view-source-button" for="mod-db-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">&quot;&quot;&quot;Creación de conexiones y del esquema de la base de datos SQLite.</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">"""Creación de conexiones y del esquema de la base de datos SQLite.</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">La información de productos, clientes y pedidos persiste entre ejecuciones</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">en un archivo ``.db`` (requisito de la sección 8 de la especificación).</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">"""</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="n">ESQUEMA</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="n">ESQUEMA</span> <span class="o">=</span> <span class="s2">"""</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="s2">CREATE TABLE IF NOT EXISTS producto (</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="s2">    id              INTEGER PRIMARY KEY AUTOINCREMENT,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="s2">    codigo          TEXT    NOT NULL UNIQUE,</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="s2">    nombre          TEXT    NOT NULL,</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="s2">    categoria       TEXT    NOT NULL CHECK (categoria IN (&#39;ALIMENTO&#39;, &#39;BEBIDA&#39;)),</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="s2">    categoria       TEXT    NOT NULL CHECK (categoria IN ('ALIMENTO', 'BEBIDA')),</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="s2">    precio_centavos INTEGER NOT NULL CHECK (precio_centavos &gt; 0),</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="s2">    disponible      INTEGER NOT NULL DEFAULT 1 CHECK (disponible IN (0, 1))</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="s2">);</span>
@@ -100,7 +100,7 @@ en un archivo <code><a href="">app.persistencia.db</a></code> (requisito de la s
 </span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="s2">    codigo_retiro  TEXT    NOT NULL UNIQUE,</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="s2">    cliente_id     INTEGER NOT NULL REFERENCES cliente (id),</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="s2">    estado         TEXT    NOT NULL CHECK (estado IN</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="s2">                   (&#39;PENDIENTE&#39;, &#39;EN_PREPARACION&#39;, &#39;LISTO_PARA_RETIRAR&#39;, &#39;ENTREGADO&#39;)),</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="s2">                   ('PENDIENTE', 'EN_PREPARACION', 'LISTO_PARA_RETIRAR', 'ENTREGADO')),</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="s2">    fecha_registro TEXT    NOT NULL,</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="s2">    total_centavos INTEGER NOT NULL CHECK (total_centavos &gt; 0)</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="s2">);</span>
@@ -133,23 +133,23 @@ en un archivo <code><a href="">app.persistencia.db</a></code> (requisito de la s
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>
 </span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a><span class="s2">CREATE INDEX IF NOT EXISTS idx_pedido_estado  ON pedido (estado);</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a><span class="s2">CREATE INDEX IF NOT EXISTS idx_pedido_cliente ON pedido (cliente_id);</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a><span class="s2">"""</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
 </span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>
 </span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a><span class="k">def</span><span class="w"> </span><span class="nf">conectar</span><span class="p">(</span><span class="n">ruta</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span><span class="p">:</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Abre una conexión con claves foráneas activas y filas accesibles por nombre.</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="w">    </span><span class="sd">"""Abre una conexión con claves foráneas activas y filas accesibles por nombre.</span>
 </span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
 </span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="sd">    Args:</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="sd">        ruta: Ruta del archivo de base de datos o ``&quot;:memory:&quot;``.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="sd">        ruta: Ruta del archivo de base de datos o ``":memory:"``.</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="sd">    """</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="n">conexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
 </span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON&quot;</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"PRAGMA foreign_keys = ON"</span><span class="p">)</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">return</span> <span class="n">conexion</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>
 </span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>
 </span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a><span class="k">def</span><span class="w"> </span><span class="nf">crear_esquema</span><span class="p">(</span><span class="n">conexion</span><span class="p">:</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Crea las tablas e índices si todavía no existen (operación idempotente).&quot;&quot;&quot;</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a><span class="w">    </span><span class="sd">"""Crea las tablas e índices si todavía no existen (operación idempotente)."""</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">ESQUEMA</span><span class="p">)</span>
 </span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></pre></div>
@@ -181,14 +181,14 @@ en un archivo <code><a href="">app.persistencia.db</a></code> (requisito de la s
     </div>
     <a class="headerlink" href="#conectar"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="conectar-73"><a href="#conectar-73"><span class="linenos">73</span></a><span class="k">def</span><span class="w"> </span><span class="nf">conectar</span><span class="p">(</span><span class="n">ruta</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span><span class="p">:</span>
-</span><span id="conectar-74"><a href="#conectar-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Abre una conexión con claves foráneas activas y filas accesibles por nombre.</span>
+</span><span id="conectar-74"><a href="#conectar-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">"""Abre una conexión con claves foráneas activas y filas accesibles por nombre.</span>
 </span><span id="conectar-75"><a href="#conectar-75"><span class="linenos">75</span></a>
 </span><span id="conectar-76"><a href="#conectar-76"><span class="linenos">76</span></a><span class="sd">    Args:</span>
-</span><span id="conectar-77"><a href="#conectar-77"><span class="linenos">77</span></a><span class="sd">        ruta: Ruta del archivo de base de datos o ``&quot;:memory:&quot;``.</span>
-</span><span id="conectar-78"><a href="#conectar-78"><span class="linenos">78</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="conectar-77"><a href="#conectar-77"><span class="linenos">77</span></a><span class="sd">        ruta: Ruta del archivo de base de datos o ``":memory:"``.</span>
+</span><span id="conectar-78"><a href="#conectar-78"><span class="linenos">78</span></a><span class="sd">    """</span>
 </span><span id="conectar-79"><a href="#conectar-79"><span class="linenos">79</span></a>    <span class="n">conexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
 </span><span id="conectar-80"><a href="#conectar-80"><span class="linenos">80</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
-</span><span id="conectar-81"><a href="#conectar-81"><span class="linenos">81</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON&quot;</span><span class="p">)</span>
+</span><span id="conectar-81"><a href="#conectar-81"><span class="linenos">81</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"PRAGMA foreign_keys = ON"</span><span class="p">)</span>
 </span><span id="conectar-82"><a href="#conectar-82"><span class="linenos">82</span></a>    <span class="k">return</span> <span class="n">conexion</span>
 </span></pre></div>
 
@@ -216,7 +216,7 @@ en un archivo <code><a href="">app.persistencia.db</a></code> (requisito de la s
     </div>
     <a class="headerlink" href="#crear_esquema"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="crear_esquema-85"><a href="#crear_esquema-85"><span class="linenos">85</span></a><span class="k">def</span><span class="w"> </span><span class="nf">crear_esquema</span><span class="p">(</span><span class="n">conexion</span><span class="p">:</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="crear_esquema-86"><a href="#crear_esquema-86"><span class="linenos">86</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Crea las tablas e índices si todavía no existen (operación idempotente).&quot;&quot;&quot;</span>
+</span><span id="crear_esquema-86"><a href="#crear_esquema-86"><span class="linenos">86</span></a><span class="w">    </span><span class="sd">"""Crea las tablas e índices si todavía no existen (operación idempotente)."""</span>
 </span><span id="crear_esquema-87"><a href="#crear_esquema-87"><span class="linenos">87</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">executescript</span><span class="p">(</span><span class="n">ESQUEMA</span><span class="p">)</span>
 </span><span id="crear_esquema-88"><a href="#crear_esquema-88"><span class="linenos">88</span></a>    <span class="n">conexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </span></pre></div>

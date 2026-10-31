@@ -1,3 +1,11 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\feral\AppData\Local\Programs\Python\Python313\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\feral\Downloads\cafeteria-pedidos
+configfile: pyproject.toml
+plugins: platformdirs-4.14.0, cov-7.1.0
+collecting ... collected 1 item
+
 tests/test_web.py::test_cp44_proteccion_csrf PASSED                      [100%]
 
-============================== 1 passed in 0.27s ===============================
+============================== 1 passed in 0.33s ==============================

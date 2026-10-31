@@ -1,3 +1,41 @@
-=========================== short test summary info ============================
+........................................................................ [ 81%]
+........F..F....                                                         [100%]
+================================== FAILURES ===================================
+_________________ test_cp41_flujo_completo_registro_de_pedido _________________
+
+web = <FlaskClient <Flask 'app'>>
+
+    def test_cp41_flujo_completo_registro_de_pedido(web):
+        """CP-41 (PN-01): registro → menú → revisión con total → confirmación con código."""
+        anonimo = web.get("/menu").get_data(as_text=True)
+>       assert "$2.50" in anonimo and "para hacer un pedido" in anonimo and "cant_A01" not in anonimo
+E       assert ('$2.50' in '<!doctype html>\n<html lang="es">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-wi...</div>\n</form>\n\n\n</main>\n<footer class="pie-pagina">Gestión de pedidos · Release 1.0.0</footer>\n</body>\n</html>' and 'para hacer un pedido' in '<!doctype html>\n<html lang="es">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-wi...</div>\n</form>\n\n\n</main>\n<footer class="pie-pagina">Gestión de pedidos · Release 1.0.0</footer>\n</body>\n</html>' and 'cant_A01' not in '<!doctype h...dy>\n</html>'
+E         
+E         'cant_A01' is contained here:
+E           abel for="cant_A01">Sánduche de pollo <span class="codigo-prod">A01</span></label></span>
+E         ?           ++++++++
+E                   <span class="precio">$2.50</span>
+E                   <span></span>
+E                 </div>...
+E         
+E         ...Full output truncated, use '-vv' to show)
+
+tests\test_web.py:12: AssertionError
+__________________________ test_cp44_proteccion_csrf __________________________
+
+tmp_path = WindowsPath('C:/Users/feral/AppData/Local/Temp/pytest-of-feral/pytest-16/test_cp44_proteccion_csrf0')
+
+    def test_cp44_proteccion_csrf(tmp_path):
+        """CP-44: un formulario enviado sin el token de la sesión se rechaza."""
+        app = create_app({"DATABASE": str(tmp_path / "csrf.db"), "SECRET_KEY": "x", "TESTING": True})
+        cliente = app.test_client()
+        respuesta = cliente.post("/personal/ingresar", data={"usuario": "admin", "clave": "cafeteria2026"})
+>       assert respuesta.status_code == 400 and "expiró" in respuesta.get_data(as_text=True)
+E       assert (302 == 400)
+E        +  where 302 = <WrapperTestResponse streamed [302 FOUND]>.status_code
+
+tests\test_web.py:77: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_web.py::test_cp41_flujo_completo_registro_de_pedido - asser...
 FAILED tests/test_web.py::test_cp44_proteccion_csrf - assert (302 == 400)
-1 failed, 87 passed in 2.19s
+2 failed, 86 passed in 3.12s
